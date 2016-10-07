@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignemnt 2</title>
+    </head>
+    <style>
+        #bu_in{
+            position: relative;
+            top: 30px;
+            left: 30px;
+            width: 350px;
+            height: 300px;
+           
+        }
+        #mid{
+            width: 100vw;
+            height: auto;
+            padding: 0 0 11vh 0;
+        }
+        #leftbutton{
+            width: 80px;
+            height: 50px;
+             float: left;
+            margin: 0 5px 0 0;
+        }
+        #rightbutton{
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 110px;
+            height: 50px;
+        }
+        .inp{
+            position: relative;
+            float: left;
+        }
+        #slideD{
+            position:fixed;
+            width: 100vw;
+            height: 10vh;
+            left: 0;
+            bottom: -10vh;
+            transition: bottom,0.5s;
+            border:1px solid black;
+            text-align: center;
+            z-index:1;
+            background-color: white;
+        }
+    </style>
+    <body>
+        <div id="bu_in">
+            <button id="leftbutton">Add</button>
+            <input class="inp" type="text" placeholder="type the url of the image" id="in_img"/>
+            <input class="inp" type="text" placeholder="type the name" id="in_name"/>
+            <input class="inp" type="text" placeholder="type the description" id="in_desc"/>
+        </div>
+        
+        <button id="rightbutton">Remove</button>
+        <div id="mid"></div>
+        <div id="slideD"></div>
+        <script>
+            var addBut = document.getElementById("leftbutton");
+            var remBut = document.getElementById("rightbutton");
+            var addImg = document.getElementById("in_img");
+            var addH3 = document.getElementById("in_name");
+            var addDesc = document.getElementById("in_desc");
+            var midD = document.getElementById("mid")
+            var bottom_sli = document.getElementById("slideD")
+            
+            addBut.onclick = function(){
+                var newDiv = document.createElement("div");
+                var newImg = document.createElement("img");
+                var newH3 = document.createElement("h3");
+                var newsubD = document.createElement("div");
+                
+            
+                
+                midD.appendChild(newDiv);
+                newDiv.style.width = "60vw";
+                newDiv.style.height = "15vw";
+                newDiv.style.position = "relative";
+                newDiv.style.left ="20vw";
+                newDiv.style.backgroundColor = "yellow";
+                newDiv.appendChild(newImg);
+                newImg.src = addImg.value;
+                newImg.style.width = "11vw";
+                newImg.style.height = "11vw";
+                newImg.style.float = "left";
+                newImg.style.margin = "3% 3% 3% 3%";
+                newDiv.appendChild(newH3);
+                newH3.style.width = "50%";
+                newH3.style.height = "30%";
+                newH3.style.float = "left";
+                newH3.style.margin = "3% 0 3% 0";
+                newH3.style.backgroundColor = "red";
+                newH3.innerHTML = addH3.value; 
+                newDiv.appendChild(newsubD);
+                newsubD.style.float = "left";
+                newsubD.style.backgroundColor = "blue";
+                newsubD.style.width = "70%";
+                newsubD.style.height = "30%";
+                newsubD.innerHTML = addDesc.value;
+                bottom_sli.innerHTML = "Created Item";
+                bottom_sli.style.bottom = "-0.5vh";
+            }
+            remBut.onclick = function(){
+                midD.innerHTML = "";
+                bottom_sli.innerHTML = "Cleared Items";
+                
+            }
+            
+            
+        </script>
+    </body>
+</html>
